@@ -49,9 +49,12 @@ class Renderer(base.Renderer):
     index = ViewPageTemplateFile('itemview.pt')
 
     def render(self):
-        import pdb;pdb.set_trace()
-        template = component.getUtility(vocabulary.ITemplateView,
+        template = None
+        try:
+            template = component.getUtility(vocabulary.ITemplateView,
                                         name=self.data.templateview)
+        except component.ComponentLookupError, e:
+            pass
         if template is None:
             return index()
         return xhtml_compress(template())
