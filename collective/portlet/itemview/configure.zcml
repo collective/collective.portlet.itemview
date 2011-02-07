@@ -3,10 +3,12 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.portlet.itemview">
 
   <five:registerPackage package="." initialize=".initialize" />
+  <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
       name="default"
@@ -15,15 +17,6 @@
       description='Install collective.gallery in Plone'
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
-
-  <utility
-    component=".vocabulary.VocabularyFactory"
-    name="collective.portlet.itemview.vocabulary.templateview"
-    />
-  <utility
-    factory=".vocabulary.DefaultTemplate"
-    name="default"
-    />
 
   <include package="plone.app.portlets" />
 
@@ -35,6 +28,7 @@
     addview=".portlet.AddForm"
     editview=".portlet.EditForm"
     />
+
   <browser:page
     name="itemview_portlet"
     for="*"
@@ -42,4 +36,5 @@
     permission="zope2.View"
     template="itemview_portlet.pt"
     />
+
 </configure>

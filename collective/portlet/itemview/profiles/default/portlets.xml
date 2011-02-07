@@ -6,7 +6,7 @@
  <portlet 
    addview="collective.portlet.itemview"
    title="Item view"
-   description="A portlet which can render an item with a selected view."
+   description="A portlet which can render an item."
    i18n:attributes="title title_itemview_portlet;
                     description description_itemview_portlet">
  </portlet>

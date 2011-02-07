@@ -10,16 +10,12 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from collective.portlet.itemview import vocabulary
+from collective.portlet.itemview import i18n
 
 import logging
 logger = logging.getLogger('collective.portlet.itemview')
 
 class IItemViewPortlet(IPortletDataProvider):
-    header = schema.TextLine(
-        title=u"Portlet header",
-        description=u"Title of the rendered portlet",
-        required=True)
 
     target = schema.Choice(
         title=u"Target Item",
@@ -29,31 +25,20 @@ class IItemViewPortlet(IPortletDataProvider):
             {},
             default_query='path:'))
 
-    templateview = schema.Choice(
-        title=u"Template View",
-        description=u"Template used to render this item",
-        required=True,
-        vocabulary="collective.portlet.itemview.vocabulary.templateview")
-
 class Assignment(base.Assignment):
     interface.implements(IItemViewPortlet)
 
-
-    header = u""
+    title = i18n.portlet_title
     target = None
-    templateview = base
 
-    def __init__(self, header=u"", target=None, templateview="base"):
-        self.header = header
+    def __init__(self, target=None):
         self.target = target
-        self.templateview = templateview
 
 class Renderer(base.Renderer):
 
-#    index = ViewPageTemplateFile('itemview.pt')
-
     def render(self):
-        templateview = self.data.templateview
+        templateview = "itemview_portlet"
+
         target = self.target()
         if target is None:
             return ""
@@ -64,7 +49,7 @@ class Renderer(base.Renderer):
             return view()
         except component.ComponentLookupError, e:
             try:
-                return target.restrictedTraverse(templateview)
+                return target.restrictedTraverse(templateview)()
             except AttributeError:
                 logger.error('no %s for %s'%(templateview, target.portal_type))
         return ""
