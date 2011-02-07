@@ -1,0 +1,26 @@
+<dl class="portlet portletItemView"
+    i18n:domain="collective.portlet.itemview"
+    tal:define="target_url view/url;
+                plone_view context/@@plone;
+                toLocalizedTime nocall:plone_view/toLocalizedTime;
+                viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
+                getIcon nocall:plone_view/getIcon;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="view/title" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <a href="#"
+           class="tile"
+           tal:attributes="href view/url;
+                           title view/title">
+            <span class="portletItemDetails"
+                  tal:content="view/description">
+                Date
+            </span>
+        </a>
+    </dd>
+</dl>

@@ -5,11 +5,15 @@ from zope import interface
 from zope.formlib import form
 from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.portlet.itemview import vocabulary
+
+import logging
+logger = logging.getLogger('collective.portlet.itemview')
 
 class IItemViewPortlet(IPortletDataProvider):
     header = schema.TextLine(
@@ -46,18 +50,47 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
 
-    index = ViewPageTemplateFile('itemview.pt')
+#    index = ViewPageTemplateFile('itemview.pt')
 
     def render(self):
-        template = None
+        templateview = self.data.templateview
+        target = self.target()
+        if target is None:
+            return ""
+
         try:
-            template = component.getUtility(vocabulary.ITemplateView,
-                                        name=self.data.templateview)
+            view = component.getMultiAdapter((target, self.request),
+                                        name=templateview)
+            return view()
         except component.ComponentLookupError, e:
-            pass
-        if template is None:
-            return index()
-        return xhtml_compress(template())
+            try:
+                return target.restrictedTraverse(templateview)
+            except AttributeError:
+                logger.error('no %s for %s'%(templateview, target.portal_type))
+        return ""
+
+    @memoize
+    def target(self):
+        """ get the collection the portlet is pointing to"""
+
+        target_path = self.data.target
+        if not target_path:
+            return None
+
+        if target_path.startswith('/'):
+            target_path = target_path[1:]
+
+        if not target_path:
+            return None
+
+        portal_state = component.getMultiAdapter((self.context, self.request),
+                                       name=u'plone_portal_state')
+        portal = portal_state.portal()
+        if isinstance(target_path, unicode):
+            #restrictedTraverse accept only strings
+            target_path = str(target_path)
+        return portal.restrictedTraverse(target_path, default=None)
+
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IItemViewPortlet)

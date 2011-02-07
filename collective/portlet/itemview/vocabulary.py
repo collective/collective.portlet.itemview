@@ -18,8 +18,8 @@ class ITemplateView(interface.Interface):
 
 class DefaultTemplate(object):
     interface.implements(ITemplateView)
-    __call__ = ViewPageTemplateFile('itemview.pt')
-    id = "default"
+#    __call__ = ViewPageTemplateFile('itemview.pt')
+    id = "itemview_portlet"
     name = u"Default template"
 
 class Vocabulary(object):

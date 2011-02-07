@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
@@ -9,7 +10,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="collective.gallery default"
+      title="collective.portlet.itemview default"
       directory="profiles/default"
       description='Install collective.gallery in Plone'
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -33,5 +34,12 @@
     renderer=".portlet.Renderer"
     addview=".portlet.AddForm"
     editview=".portlet.EditForm"
+    />
+  <browser:page
+    name="itemview_portlet"
+    for="*"
+    class=".itemview_portlet.ItemViewPortlet"
+    permission="zope2.View"
+    template="itemview_portlet.pt"
     />
 </configure>
