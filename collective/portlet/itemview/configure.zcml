@@ -37,4 +37,13 @@
     template="itemview_portlet.pt"
     />
 
+  <utility
+    component=".vocabulary.VocabularyFactory"
+    name="collective.portlet.itemview.vocabulary.templateview"
+    />
+  <utility
+    factory=".vocabulary.DefaultPortletView"
+    name="default"
+    />
+
 </configure>

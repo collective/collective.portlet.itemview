@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-02-07 22:37+0000\n"
+"POT-Creation-Date: 2011-02-08 11:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,33 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.portlet.itemview\n"
 
-#: ./i18n.py:5
-msgid "Item Portlet View"
+#: ./i18n.py:7
+msgid "Item"
+msgstr ""
+
+#: ./i18n.py:9
+msgid "View"
 msgstr ""
 
 #. Default: "A portlet which can render an item."
+#: ./i18n.py:6
 #: ./profiles/default/portlets.xml
-msgid "description_itemview_portlet"
+msgid "portlet_description"
 msgstr ""
 
-#. Default: "Item view"
+#. Default: "Find an item to display"
+#: ./i18n.py:8
+msgid "portlet_target_desc"
+msgstr ""
+
+#. Default: "Item portlet view"
+#: ./i18n.py:5
 #: ./profiles/default/portlets.xml
-msgid "title_itemview_portlet"
+msgid "portlet_title"
+msgstr ""
+
+#. Default: "view used to render this item"
+#: ./i18n.py:10
+msgid "portlet_viewname_desc"
 msgstr ""
 

@@ -18,26 +18,36 @@ logger = logging.getLogger('collective.portlet.itemview')
 class IItemViewPortlet(IPortletDataProvider):
 
     target = schema.Choice(
-        title=u"Target Item",
-        description=u"Find the collection which provides the items to list",
+        title=i18n.portlet_target_title,
+        description=i18n.portlet_target_desc,
         required=True,
         source=SearchableTextSourceBinder(
             {},
             default_query='path:'))
 
+    viewname = schema.Choice(
+        title=i18n.portlet_viewname_title,
+        description=i18n.portlet_viewname_desc,
+        required=True,
+        default="itemview_portlet",
+        vocabulary="collective.portlet.itemview.vocabulary.templateview")
+
 class Assignment(base.Assignment):
     interface.implements(IItemViewPortlet)
 
     title = i18n.portlet_title
+    viewname = "itemview_portlet"
     target = None
 
-    def __init__(self, target=None):
+    def __init__(self, target=None, viewname="itemview_portlet"):
         self.target = target
+        self.viewname = viewname
 
 class Renderer(base.Renderer):
 
     def render(self):
-        templateview = "itemview_portlet"
+        viewname = self.data.viewname
+        if not viewname: viewname="itemview_portlet"
 
         target = self.target()
         if target is None:
@@ -45,13 +55,11 @@ class Renderer(base.Renderer):
 
         try:
             view = component.getMultiAdapter((target, self.request),
-                                        name=templateview)
+                                        name=viewname)
             return view()
         except component.ComponentLookupError, e:
-            try:
-                return target.restrictedTraverse(templateview)()
-            except AttributeError:
-                logger.error('no %s for %s'%(templateview, target.portal_type))
+            logger.error('no %s for %s'%(viewname, target.portal_type))
+
         return ""
 
     @memoize

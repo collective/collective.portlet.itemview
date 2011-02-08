@@ -8,23 +8,23 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope import interface
 
-class ITemplateView(interface.Interface):
+class IPortletView(interface.Interface):
 
     id = schema.ASCIILine(title=u"id")
     name = schema.TextLine(title=u"title")
 
-class DefaultTemplate(object):
-    interface.implements(ITemplateView)
+class DefaultPortletView(object):
+    interface.implements(IPortletView)
 
     id = "itemview_portlet"
-    name = u"Default template"
+    name = u"Default"
 
 class Vocabulary(object):
     """    """
     interface.implements(IVocabularyFactory)
 
     def __call__(self, context):
-        templates = component.getUtilitiesFor(ITemplateView)
+        templates = component.getUtilitiesFor(IPortletView)
         items = [SimpleTerm(item[1].id, item[1].id, item[1].name) for item in templates]
         return SimpleVocabulary(items)
 
