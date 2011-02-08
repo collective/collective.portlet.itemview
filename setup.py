@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0dev'
+version = '1.0'
 
 setup(name='collective.portlet.itemview',
       version=version,
-      description="A portlet where you can select one item, and apply it a view",
+      description="A portlet where you can select one item, and render it with a view",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -25,7 +25,6 @@ setup(name='collective.portlet.itemview',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.registry',
           # -*- Extra requirements: -*-
       ],
       extras_require = {'test':['plone.app.testing']},
