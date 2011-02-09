@@ -74,5 +74,12 @@
     permission="zope2.View"
     template="itemview_portlet_file.pt"
     />
+  <browser:page
+    name="itemview_portlet"
+    for="Products.ATContentTypes.interfaces.event.IATEvent"
+    class=".itemview_portlet.EventItemView"
+    permission="zope2.View"
+    template="itemview_portlet_event.pt"
+    />
 
 </configure>

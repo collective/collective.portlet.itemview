@@ -1,0 +1,43 @@
+<dl class="portlet portletFile"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href view/url" tal:content="view/title">
+            Title
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+
+        <table class="vertical listing"
+               summary="Event details" i18n:attributes="summary summary_event_details;">
+            <tbody>
+                <tr tal:condition="view/when">
+                    <th i18n:translate="event_when">When</th>
+                    <td tal:content="view/when">
+                    </td>
+                </tr>
+                <tr tal:condition="view/where">
+                    <th i18n:translate="event_where">Where</th>
+                    <td class="location" tal:content="view/where">
+                    </td>
+                </tr>
+                <tr tal:condition="view/contact">
+                    <th i18n:translate="contact">Contact</th>
+                    <td><a tal:condition="view/context/contact_email" href="" title="email" tal:attributes="href string:${view/url}/sendto_form?send_to_address=${view/context/contact_email}" tal:content="string:${view/context/contact_name}, "></a>
+                    <span tal:condition="not:view/context/contact_email" tal:content="string:${view/context/contact_name}, "></span>,
+                    <span tal:content="string:${view/context/contact_phone}"></span>
+                    </td>
+                </tr>
+                <tr i18n:domain="collective.portlet.itemview" tal:condition="view/context/event_url">
+                    <th i18n:translate="website">Web site</th>
+                    <td><a href="" title="event site" tal:attributes="href view/context/event_url"
+                           i18n:translate="">Link</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>
+</dl>
