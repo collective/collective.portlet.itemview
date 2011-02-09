@@ -53,5 +53,12 @@
     permission="zope2.View"
     template="itemview_portlet_topic.pt"
     />
+  <browser:page
+    name="itemview_portlet"
+    for="Products.ATContentTypes.interfaces.image.IATImage"
+    class=".itemview_portlet.DefaultItemView"
+    permission="zope2.View"
+    template="itemview_portlet_image.pt"
+    />
 
 </configure>

@@ -1,0 +1,19 @@
+<dl class="portlet portletCollection"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href view/title" tal:content="view/title">
+            Title
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <img alt="" src="#"
+             class="tile"
+             tal:attributes="src string:${view/url}/@@images/image/mini;
+                             alt view/title"/>
+    </dd>
+
+</dl>
