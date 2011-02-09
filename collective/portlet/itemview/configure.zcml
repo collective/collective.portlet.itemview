@@ -32,7 +32,7 @@
   <browser:page
     name="itemview_portlet"
     for="*"
-    class=".itemview_portlet.ItemViewPortlet"
+    class=".itemview_portlet.DefaultItemView"
     permission="zope2.View"
     template="itemview_portlet.pt"
     />
@@ -44,6 +44,14 @@
   <utility
     factory=".vocabulary.DefaultPortletView"
     name="default"
+    />
+
+  <browser:page
+    name="itemview_portlet"
+    for="Products.ATContentTypes.interfaces.topic.IATTopic"
+    class=".itemview_portlet.TopicItemView"
+    permission="zope2.View"
+    template="itemview_portlet_topic.pt"
     />
 
 </configure>

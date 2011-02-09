@@ -1,7 +1,8 @@
+from plone.memoize.instance import memoize
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-class ItemViewPortlet(BrowserView):
+class DefaultItemView(BrowserView):
     """default view"""
 
     def __init__(self, context, request):
@@ -16,3 +17,12 @@ class ItemViewPortlet(BrowserView):
     
     def url(self):
         return self.context.absolute_url()
+    
+class TopicItemView(DefaultItemView):
+
+    @memoize
+    def results(self):
+        results = self.context.queryCatalog()
+        if len(results)>5:
+            results = results[:4]
+        return results
