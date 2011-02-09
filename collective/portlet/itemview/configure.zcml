@@ -65,7 +65,7 @@
     for="plone.app.folder.folder.IATUnifiedFolder"
     class=".itemview_portlet.FolderItemView"
     permission="zope2.View"
-    template="itemview_portlet_folder.pt"
+    template="itemview_portlet_topic.pt"
     />
 
 </configure>
