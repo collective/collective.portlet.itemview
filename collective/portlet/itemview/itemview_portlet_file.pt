@@ -1,0 +1,46 @@
+<dl class="portlet portletFile"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href string:${view/url}/view" tal:content="view/title">
+            Title
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <table border="1">
+            <tr>
+                <td>Download</td>
+                <td>
+                <a href="#" title="#" class="tile"
+                     tal:attributes="href string:${view/url};
+                             title view/title">
+                 Link
+                </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Filename</td>
+                <td style="overflow:hidden" tal:content="view/filename"></td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td tal:content="view/title"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td tal:content="view/description"></td>
+            </tr>
+            <tr>
+                <td>Mime type</td>
+                <td><img tal:attributes="src view/icon_url" alt="icon"/><span tal:content="view/content_type"></span></td>
+            </tr>
+            <tr>
+                <td>Size</td>
+                <td tal:content="view/size"></td>
+            </tr>
+        </table>
+    </dd>
+</dl>

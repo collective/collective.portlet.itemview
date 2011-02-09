@@ -1,9 +1,9 @@
-<dl class="portlet portletCollection"
+<dl class="portlet portletImage"
     i18n:domain="plone">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a tal:attributes="href view/title" tal:content="view/title">
+        <a tal:attributes="href string:${view/url}/view" tal:content="view/title">
             Title
         </a>
         <span class="portletTopRight"></span>

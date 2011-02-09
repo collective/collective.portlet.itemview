@@ -35,3 +35,18 @@ class FolderItemView(DefaultItemView):
         if len(results)>5:
             results = results[:4]
         return results
+
+class FileItemView(DefaultItemView):
+
+    def content_type(self):
+        return self.context.get_content_type()
+
+    def size(self):
+        size = self.context.get_size()
+        return '%s kb (%s bytes)'%(size/1024, size)
+
+    def icon_url(self):
+        return self.context.portal_url() +'/'+ self.context.getIcon()
+
+    def filename(self):
+        return self.context.getFilename()

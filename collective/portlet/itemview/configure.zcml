@@ -67,5 +67,12 @@
     permission="zope2.View"
     template="itemview_portlet_topic.pt"
     />
+  <browser:page
+    name="itemview_portlet"
+    for="Products.ATContentTypes.interfaces.file.IATFile"
+    class=".itemview_portlet.FileItemView"
+    permission="zope2.View"
+    template="itemview_portlet_file.pt"
+    />
 
 </configure>
