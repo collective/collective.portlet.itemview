@@ -24,7 +24,7 @@ class TopicItemView(DefaultItemView):
     def results(self):
         results = self.context.queryCatalog()
         if len(results)>5:
-            results = results[:4]
+            results = results[:3]
         return results
 
 class FolderItemView(DefaultItemView):
@@ -33,7 +33,7 @@ class FolderItemView(DefaultItemView):
     def results(self):
         results = self.context.getFolderContents()
         if len(results)>5:
-            results = results[:4]
+            results = results[:3]
         return results
 
 class FileItemView(DefaultItemView):

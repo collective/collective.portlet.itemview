@@ -1,5 +1,5 @@
 <dl class="portlet portletFile"
-    i18n:domain="plone">
+    i18n:domain="collective.portlet.itemview">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -12,33 +12,33 @@
     <dd class="portletItem">
         <table border="1">
             <tr>
-                <td>Download</td>
+                <td i18n:translate="">Download</td>
                 <td>
                 <a href="#" title="#" class="tile"
                      tal:attributes="href string:${view/url};
-                             title view/title">
+                             title view/title" i18n:translate="">
                  Link
                 </a>
                 </td>
             </tr>
             <tr>
-                <td>Filename</td>
+                <td i18n:translate="">Filename</td>
                 <td style="overflow:hidden" tal:content="view/filename"></td>
             </tr>
             <tr>
-                <td>Title</td>
+                <td i18n:translate="">Title</td>
                 <td tal:content="view/title"></td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td i18n:translate="">Description</td>
                 <td tal:content="view/description"></td>
             </tr>
             <tr>
-                <td>Mime type</td>
+                <td  i18n:translate="">Mime type</td>
                 <td><img tal:attributes="src view/icon_url" alt="icon"/><span tal:content="view/content_type"></span></td>
             </tr>
             <tr>
-                <td>Size</td>
+                <td i18n:translate="">Size</td>
                 <td tal:content="view/size"></td>
             </tr>
         </table>

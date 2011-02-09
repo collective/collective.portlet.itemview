@@ -35,13 +35,19 @@ class IItemViewPortlet(IPortletDataProvider):
 class Assignment(base.Assignment):
     interface.implements(IItemViewPortlet)
 
-    title = i18n.portlet_title
     viewname = "itemview_portlet"
     target = None
 
     def __init__(self, target=None, viewname="itemview_portlet"):
         self.target = target
         self.viewname = viewname
+    
+    @property
+    def title(self):
+        try:
+            return self.target.Title()
+        except AttributeError:
+            return i18n.portlet_title
 
 class Renderer(base.Renderer):
 
@@ -89,8 +95,8 @@ class AddForm(base.AddForm):
     form_fields = form.Fields(IItemViewPortlet)
     form_fields['target'].custom_widget = UberSelectionWidget
 
-    label = u"Add Item View portlet"
-    description = u"This portlet displays an item with a selected view"
+    label = i18n.portlet_addform_title
+    description = i18n.portlet_addform_desc
 
     def create(self, data):
         return Assignment(**data)
@@ -99,5 +105,5 @@ class EditForm(base.EditForm):
     form_fields = form.Fields(IItemViewPortlet)
     form_fields['target'].custom_widget = UberSelectionWidget
 
-    label = u"Edit Item View Portlet"
-    description = u"This portlet displays an item with a selected view."
+    label = i18n.portlet_editform_title
+    description = i18n.portlet_editform_desc

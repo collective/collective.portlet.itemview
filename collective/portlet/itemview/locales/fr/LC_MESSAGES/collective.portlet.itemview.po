@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-02-08 11:14+0000\n"
+"POT-Creation-Date: 2011-02-09 14:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,65 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.portlet.itemview\n"
 
+#: ./i18n.py:11
+msgid "Add Item View portlet"
+msgstr "Ajouter portlet Elément"
+
+#: ./itemview_portlet_file.pt:33
+msgid "Description"
+msgstr "Description"
+
+#: ./itemview_portlet_file.pt:15
+msgid "Download"
+msgstr "Téléchargement"
+
+#: ./i18n.py:13
+msgid "Edit Item View Portlet"
+msgstr "Modifier portlet Elément"
+
+#: ./itemview_portlet_file.pt:25
+msgid "Filename"
+msgstr "Nom du fichier"
+
 #: ./i18n.py:7
 msgid "Item"
 msgstr "Elément"
 
+#: ./itemview_portlet_file.pt:17
+msgid "Link"
+msgstr "Lien"
+
+#: ./itemview_portlet_file.pt:37
+msgid "Mime type"
+msgstr "Type mime"
+
+#: ./itemview_portlet_file.pt:41
+msgid "Size"
+msgstr "Taille"
+
+#: ./itemview_portlet_file.pt:29
+msgid "Title"
+msgstr "Titre"
+
 #: ./i18n.py:9
 msgid "View"
 msgstr "Mode d'affichage"
+
+#. Default: "This portlet displays an item with a selected view"
+#: ./i18n.py:12
+msgid "portlet_addform_desc"
+msgstr "Cette portlet affiche un élément avec une vue selectionnée"
 
 #. Default: "A portlet which can render an item."
 #: ./i18n.py:6
 #: ./profiles/default/portlets.xml
 msgid "portlet_description"
 msgstr "Un portlet affichant un élément du site."
+
+#. Default: "This portlet displays an item with a selected view."
+#: ./i18n.py:14
+msgid "portlet_editform_desc"
+msgstr "Cette portlet affiche un élément avec une vue sélectionnée."
 
 #. Default: "Find an item to display"
 #: ./i18n.py:8
@@ -46,3 +92,4 @@ msgstr "Elément"
 #: ./i18n.py:10
 msgid "portlet_viewname_desc"
 msgstr "Vue utilisée pour afficher l'élément"
+
