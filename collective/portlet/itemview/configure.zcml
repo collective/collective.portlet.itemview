@@ -60,5 +60,12 @@
     permission="zope2.View"
     template="itemview_portlet_image.pt"
     />
+  <browser:page
+    name="itemview_portlet"
+    for="plone.app.folder.folder.IATUnifiedFolder"
+    class=".itemview_portlet.FolderItemView"
+    permission="zope2.View"
+    template="itemview_portlet_folder.pt"
+    />
 
 </configure>

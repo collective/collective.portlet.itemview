@@ -26,3 +26,12 @@ class TopicItemView(DefaultItemView):
         if len(results)>5:
             results = results[:4]
         return results
+
+class FolderItemView(DefaultItemView):
+
+    @memoize
+    def results(self):
+        results = self.context.getFolderContents()
+        if len(results)>5:
+            results = results[:4]
+        return results
