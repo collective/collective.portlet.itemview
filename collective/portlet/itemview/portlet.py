@@ -88,14 +88,16 @@ class Renderer(base.Renderer):
 class AddForm(base.AddForm):
     form_fields = form.Fields(IItemViewPortlet)
     form_fields['target'].custom_widget = UberSelectionWidget
+
     label = u"Add Item View portlet"
     description = u"This portlet displays an item with a selected view"
 
     def create(self, data):
-        return Assignment()
+        return Assignment(**data)
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IItemViewPortlet)
     form_fields['target'].custom_widget = UberSelectionWidget
+
     label = u"Edit Item View Portlet"
     description = u"This portlet displays an item with a selected view."
