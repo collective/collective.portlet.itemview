@@ -11,6 +11,24 @@ Other add-ons can now provide a portlet just by adding a utility and a browser v
 The utility is to register a new kind of view and make it available throw the portlet
 add form. You can check collective.gallery and nmd.plonelinkasvideoembed.
 
+Community
+=========
+
+collective.gallery
+------------------
+
+viewname: Gallery
+view: portlet_itemview_gallery
+types: topic, folder, link
+
+collective.dewplayer
+--------------------
+
+viewname: Dewplayer
+view: portlet_itemview_dewplayer
+types: topic, folder, file
+
+
 Credits
 =======
 
