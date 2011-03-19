@@ -32,22 +32,39 @@ class IItemViewPortlet(IPortletDataProvider):
         default="itemview_portlet",
         vocabulary="collective.portlet.itemview.vocabulary.templateview")
 
+def getTarget(portal, target_path):
+    if not target_path:
+        return None
+
+    if target_path.startswith('/'):
+        target_path = target_path[1:]
+
+    if not target_path:
+        return None
+
+    if isinstance(target_path, unicode):
+        #restrictedTraverse accept only strings
+        target_path = str(target_path)
+    return portal.restrictedTraverse(target_path, default=None)
+
 class Assignment(base.Assignment):
     interface.implements(IItemViewPortlet)
 
     viewname = "itemview_portlet"
     target = None
 
-    def __init__(self, target=None, viewname="itemview_portlet"):
+    def __init__(self,target=None, viewname="itemview_portlet"):
         self.target = target
         self.viewname = viewname
     
     @property
     def title(self):
-        try:
-            return self.target.Title()
-        except AttributeError:
-            return i18n.portlet_title
+        if self.target:
+            portal = component.getSiteManager()
+            target = getTarget(portal, self.target)
+            if target:
+                return target.Title()
+        return i18n.portlet_title
 
 class Renderer(base.Renderer):
 
@@ -73,22 +90,10 @@ class Renderer(base.Renderer):
         """ get the collection the portlet is pointing to"""
 
         target_path = self.data.target
-        if not target_path:
-            return None
-
-        if target_path.startswith('/'):
-            target_path = target_path[1:]
-
-        if not target_path:
-            return None
-
         portal_state = component.getMultiAdapter((self.context, self.request),
                                        name=u'plone_portal_state')
         portal = portal_state.portal()
-        if isinstance(target_path, unicode):
-            #restrictedTraverse accept only strings
-            target_path = str(target_path)
-        return portal.restrictedTraverse(target_path, default=None)
+        return getTarget(portal, target_path)
 
 
 class AddForm(base.AddForm):

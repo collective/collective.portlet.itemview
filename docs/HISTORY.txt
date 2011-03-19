@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.2 (unreleased)
+----------------
+
+- Add title on portlets using target.Title() in manage-portlets view
+  [toutpt]
+
 1.1 (2011-02-10)
 ----------------
 
