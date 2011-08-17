@@ -14,7 +14,7 @@
       name="default"
       title="collective.portlet.itemview default"
       directory="profiles/default"
-      description='Install collective.gallery in Plone'
+      description='Install collective.portlet.itemview in Plone'
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
 
