@@ -104,7 +104,8 @@ class AddForm(base.AddForm):
     description = i18n.portlet_addform_desc
 
     def create(self, data):
-        return Assignment(**data)
+        return Assignment( target=data.get("target"), 
+                viewname=data.get("viewname", "itemview_portlet") )
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IItemViewPortlet)
