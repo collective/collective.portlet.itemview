@@ -61,7 +61,17 @@ class Assignment(base.Assignment):
     def title(self):
         if self.target:
             portal = component.getSiteManager()
-            target = getTarget(portal, self.target)
+            try:
+                target = getTarget(portal, self.target)
+            except AttributeError:
+                #TODO: need to work out why we can't always get the portal
+                if isinstance(self.target, basestring):
+                    title = self.target
+                    if title.startswith('/'):
+                        title = title[1:]
+                    return title
+                else:
+                    target = None
             if target:
                 return target.Title()
         return i18n.portlet_title
