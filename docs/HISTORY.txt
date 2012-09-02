@@ -5,7 +5,8 @@ Changelog
 ----------------
 
 - Fix default profile description
-  [toutpt]
+
+- Add portlet specific permission
 
 1.2 (2011-06-23)
 ----------------

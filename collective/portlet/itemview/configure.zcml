@@ -7,7 +7,6 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.portlet.itemview">
 
-  <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
@@ -19,12 +18,18 @@
   />
 
   <include package="plone.app.portlets" />
+  <permission
+    id="collective.portlet.itemview.AddItemViewPortlet"
+    title="collective.portlet.itemview: Add itemview portlet"
+    />
 
   <plone:portlet
     name="collective.portlet.itemview"
     interface=".portlet.IItemViewPortlet"
     assignment=".portlet.Assignment"
     renderer=".portlet.Renderer"
+    view_permission="zope2.View"
+    edit_permission="collective.portlet.itemview.AddItemViewPortlet"
     addview=".portlet.AddForm"
     editview=".portlet.EditForm"
     />
